@@ -1,0 +1,24 @@
+{
+  "name": "sql-employee-tracker",
+  "version": "1.0.0",
+  "description": "---\r ## Table of Contents\r --- \r - [SQL: Employee Tracker](#sql-employee-tracker)\r   - [Table of Contents](#table-of-contents)\r   - [Project Description](#project-description)\r   - [Installation and Test Instructions](#installation-and-test-instructions)\r   - [SQL: Employee Tracker Demo Video](#sql-employee-tracker-demo-video)\r   - [Inquire](#inquire)\r   - [MIT License](#mit-license)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bryan3D/SQL-Employee-Tracker.git"
+  },
+  "author": "Bryan A Quero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bryan3D/SQL-Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/Bryan3D/SQL-Employee-Tracker#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^9.1.4",
+    "mysql2": "^2.3.3"
+  }
+}

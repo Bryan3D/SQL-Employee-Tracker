@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
     password: "@@22@MySql@23@",
 
     // Name of database
-    database: "employees"
+    database: "employees_db"
 
 });
 

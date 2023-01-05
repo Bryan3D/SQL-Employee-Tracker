@@ -3,7 +3,11 @@
     "ignorePaths": [],
     "dictionaryDefinitions": [],
     "dictionaries": [],
-    "words": [],
+    "words": [
+        "Depts",
+        "lookuprole",
+        "viewrole"
+    ],
     "ignoreWords": [],
     "import": []
 }

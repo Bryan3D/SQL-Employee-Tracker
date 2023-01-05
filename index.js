@@ -17,142 +17,362 @@ const connection = mysql.createConnection({
 
 });
 
-// Connect to database
+
 // The connection.connect() method takes a callback function as an argument, which is executed when the connection to the database is established
-connection.connect(function (err) {
+connection.connect((err) => {
     if (err) throw err;
-    console.log("connected as id " + connection.threadId);
-    start();
+    runStart();
 });
 
-// Function to start the application
+// This is the runStart function that starts the application.
 
-function start() {
-    //The inquirer.prompt() method returns a promise that is fulfilled with the user's response
-    inquirer.prompt({
-        name: "action",
-        type: "list",
-        message: "What would you like to do?",
-        choices: [
-            "Add departments, roles, employees",
-            "View departments, roles, employees",
-            "Update employee roles",
-            "Exit"
-        ]
-    }).then(function (answer) {
-        switch (answer.action) {
-            case "Add departments, roles, employees":
-                // "Add departments, roles, employees": calls the add() function
-                add();
-                break;
+function runStart() {
 
-            case "View departments, roles, employees":
-                // "View departments, roles, employees": calls the view() function
-                view();
-                break;
+  inquirer
+    .prompt({
+      name: "action",
+      type: "list",
+      message: "What would you like to do?",
+      choices: [
+        "View All Employees",
+        "Add Employee",
+        "Remove Employee",
+        "Update Employee Role",
+        "Update Employee Manager",
+        "View All Roles",
+        "Add Role",
+        "Remove Role",
+        "View All Departments",
+        "Add Department",
+        "Remove Department",
+        "View Total Budget",
+        "Exit"
+      ]
+    })
+    .then(function(answer) {
+      switch (answer.action) {
+      case "View All Employees":
+        viewAllEmployees();
+        break;
 
-            case "Update employee roles":
-                // "Update employee roles": calls the update() function
-                update();
-                break;
-                
-                // "Exit" : the connection to the database is terminated 
-            case "Exit":
-                connection.end();
-                break;
-        }
+      case "Add Employee":
+        addEmployee();
+        break;
+
+      case "Remove Employee":
+        removeEmployee();
+        break;
+
+      case "Update Employee Role":
+        updateEmployeeRole();
+        break;
+
+      case "Update Employee Manager":
+        updateManager();
+        break;
+
+      case "View All Roles":
+        viewAllRoles();
+        break;
+
+      case "Add Role":
+        addRole();
+        break;
+
+      case "Remove Role":
+        removeRole();
+        break;
+
+      case "View All Departments":
+        viewAllDepartments();
+        break;
+
+      case "Add Department":
+        addDepartment();
+        break;
+
+      case "Remove Department":
+        removeDepartment();
+        break;
+
+      case "View Total Budget":
+        viewTotalBudget();
+        break;
+
+      case "Exit":
+        connection.end();
+        break;
+      }
     });
-
-};
+}
 
 // This is addNewEmployee function prompts the user to enter the first and last name, role ID, and manager ID (optional) for the new employee and then inserts this information into the employees table using a MySQL INSERT query.
+function viewAllEmployee(){
+    connection.query(
+      "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+      
+      function(err, res, fields) {
 
-function addNewEmployee() {
-    inquirer
-      .prompt([
-        {
-          name: 'firstName',
-          type: 'input',
-          message: 'Enter the employee\'s first name:'
-        },
-        {
-          name: 'lastName',
-          type: 'input',
-          message: 'Enter the employee\'s last name:'
-        },
-        {
-          name: 'roleId',
-          type: 'input',
-          message: 'Enter the employee\'s role ID:'
-        },
-        {
-          name: 'managerId',
-          type: 'input',
-          message: 'Enter the employee\'s manager ID (optional):'
-        }
-      ])
-      .then(answers => {
-        const { firstName, lastName, roleId, managerId } = answers;
-        connection.query(
-          'INSERT INTO employees SET ?',
-          {
-            first_name: firstName,
-            last_name: lastName,
-            role_id: roleId,
-            manager_id: managerId
-          },
-          error => {
-            if (error) throw error;
-            console.log('Employee added to the database.');
-            start();
-
-          }
-        );
-
+        if (err) throw err;
+        console.table(res);
+        runStart();
       }
-        );
+
+    );
 };
 
-// This is addNewRole function prompts the user to enter the title, salary, and department ID for the new role and then inserts this information into the roles table using a MySQL INSERT query.
+// This is viewAllEmployeesByDepartment function prompts the user to enter the department name and then displays all employees in that department using a MySQL SELECT query.
+function viewAllEmployeesByDepartment(){
+    connection.query(
+      "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+      
+      function(err, res, fields) {
 
-function addNewRole() {
-    inquirer
-      .prompt([
-        {
-          name: 'title',
-          type: 'input',
-          message: 'Enter the role title:'
-        },
-        {
-          name: 'salary',
-          type: 'input',
-          message: 'Enter the role salary:'
-        },
-        {
-          name: 'departmentId',
-          type: 'input',
-          message: 'Enter the department ID:'
-        }
-      ])
-      .then(answers => {
-        const { title, salary, departmentId } = answers;
-        connection.query(
-          'INSERT INTO roles SET ?',
-          {
-            title: title,
-            salary: salary,
-            department_id: departmentId
-          },
-          error => {
-            if (error) throw error;
-            console.log('Role added to the database.');
-
-            // After the new employee or role has been added to the database, the start function is called again to allow the user to perform another action.
-            start();
-
-          }
-        );
-
+        if (err) throw err;
+        console.table(res);
+        runStart();
       }
-        );
+
+    )
+
+
 }
+
+// This is viewAllEmployeesByManager function prompts the user to enter the manager's name and then displays all employees that report to that manager using a MySQL SELECT query.
+
+function viewAllEmployeesByManager(){
+
+    connection.query(
+      "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+      
+      function(err, res, fields) {
+
+        if (err) throw err;
+        console.table(res);
+        runStart();
+      }
+
+    );
+
+
+};
+
+// This is addEmployee function prompts the user to enter the first and last name, role ID, and manager ID (optional) for the new employee and then inserts this information into the employees table using a MySQL INSERT query.
+
+function addEmployee(){
+      
+      connection.query(
+        "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+        
+        function(err, res, fields) {
+  
+          if (err) throw err;
+          console.table(res);
+          runStart();
+        }
+  
+      );
+  
+
+};
+
+// This is removeEmployee function prompts the user to enter the first and last name of the employee to be removed and then deletes that employee from the employees table using a MySQL DELETE query.
+
+function removeEmployee(){
+
+    connection.query(
+      "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+      
+      function(err, res, fields) {
+
+        if (err) throw err;
+        console.table(res);
+        runStart();
+      }
+
+    );
+
+
+};
+
+
+// This is updateEmployeeRole function prompts the user to enter the first and last name of the employee whose role is to be updated and then updates the employee's role using a MySQL UPDATE query.
+
+function updateEmployeeRole(){
+
+    connection.query(
+      "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+      
+      function(err, res, fields) {
+
+        if (err) throw err;
+        console.table(res);
+        runStart();
+      }
+
+    );
+
+};
+
+// This is updateManager function prompts the user to enter the first and last name of the employee whose manager is to be updated and then updates the employee's manager using a MySQL UPDATE query.
+
+function updateManager(){
+
+    connection.query(
+      "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+      
+      function(err, res, fields) {
+
+        if (err) throw err;
+        console.table(res);
+        runStart();
+      }
+
+    );
+
+}
+
+// This is viewAllRoles function displays all roles in the company using a MySQL SELECT query.
+
+function viewAllRoles(){
+  
+      connection.query(
+        "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+        
+        function(err, res, fields) {
+  
+          if (err) throw err;
+          console.table(res);
+          runStart();
+        }
+  
+      );
+  
+};
+
+// This is addRole function prompts the user to enter the name, salary, and department ID for the new role and then inserts this information into the roles table using a MySQL INSERT query.
+
+function addRole(){
+  
+      connection.query(
+        "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+        
+        function(err, res, fields) {
+  
+          if (err) throw err;
+          console.table(res);
+          runStart();
+        }
+  
+      );
+  
+  };
+
+// This is removeRole function prompts the user to enter the name of the role to be removed and then deletes that role from the roles table using a MySQL DELETE query.
+
+function removeRole(){
+
+    connection.query(
+      "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+      
+      function(err, res, fields) {
+
+        if (err) throw err;
+        console.table(res);
+        runStart();
+      }
+
+    );
+
+};
+
+// This is viewAllDepartments function displays all departments in the company using a MySQL SELECT query.
+
+function viewAllDepartments(){
+  
+      connection.query(
+        "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+        
+        function(err, res, fields) {
+  
+          if (err) throw err;
+          console.table(res);
+          runStart();
+        }
+  
+      );
+  
+  }
+
+// This is addDepartment function prompts the user to enter the name of the new department and then inserts this information into the departments table using a MySQL INSERT query.
+
+function addDepartment(){
+    
+        connection.query(
+          "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+          
+          function(err, res, fields) {
+    
+            if (err) throw err;
+            console.table(res);
+            runStart();
+          }
+    
+        );
+    
+    }
+
+// This is removeDepartment function prompts the user to enter the name of the department to be removed and then deletes that department from the departments table using a MySQL DELETE query.
+
+function removeDepartment(){
+  
+      connection.query(
+        "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+        
+        function(err, res, fields) {
+  
+          if (err) throw err;
+          console.table(res);
+          runStart();
+        }
+  
+      );
+  
+  }
+
+// This is viewTotalBudget function displays the total utilized budget of a department -- the combined salaries of all employees in that department -- using a MySQL SELECT query.
+
+function viewTotalBudget(){
+
+    connection.query(
+      "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+      
+      function(err, res, fields) {
+
+        if (err) throw err;
+        console.table(res);
+        runStart();
+      }
+
+    );
+
+}
+
+// This is exit function exits the application.
+
+function exit(){
+  
+      connection.query(
+        "SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id, role.title, role.salary, role.id, department.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id",
+        
+        function(err, res, fields) {
+  
+          if (err) throw err;
+          console.table(res);
+          runStart();
+        }
+  
+      );
+  
+  };
+

@@ -2,8 +2,6 @@
 <img src="assets\img\2023-01-06 20_14_50-Gray and White Circle Logo _ DesignEvo Logo Maker.png"/>
 </p>
 
-# SQL: Employee Tracker
----
 ## Table of Contents
 --- 
 - [SQL: Employee Tracker](#sql-employee-tracker)

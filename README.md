@@ -27,7 +27,7 @@
 
 ## SQL: Employee Tracker Demo Video
 ---
-<iframe src="https://drive.google.com/file/d/1O-sH6OnsDz2c03cCYxApJGLwDFIt32ll/preview" width="640" height="480"></iframe>
+[![Watch the Video](https://drive.google.com/file/d/1O-sH6OnsDz2c03cCYxApJGLwDFIt32ll/preview" width="640" height="480")
 
 ---
 

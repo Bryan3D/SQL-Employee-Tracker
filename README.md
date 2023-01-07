@@ -40,6 +40,8 @@ Developers frequently have to create interfaces that allow non-developers to eas
 ---
 
 ---
+![2023-01-06 21_12_00-README md - SQL-Employee-Tracker - Visual Studio Code](https://user-images.githubusercontent.com/10051887/211127011-02cd2856-15d9-4849-9651-d9f5029a52e4.png)
+
 ![Alt text](assets/img/2023-01-06%2019_46_23-server.js%20-%20SQL-Employee-Tracker%20-%20Visual%20Studio%20Code.png)
 
 ![Alt text](assets/img/2023-01-06%2019_47_42-server.js%20-%20SQL-Employee-Tracker%20-%20Visual%20Studio%20Code.png)

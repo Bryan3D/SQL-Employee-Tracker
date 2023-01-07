@@ -4,13 +4,12 @@
 
 ## Table of Contents
 --- 
-- [SQL: Employee Tracker](#sql-employee-tracker)
-  - [Table of Contents](#table-of-contents)
-  - [Project Description](#project-description)
-  - [Installation and Test Instructions](#installation-and-test-instructions)
-  - [SQL: Employee Tracker Demo Video](#sql-employee-tracker-demo-video)
-  - [Inquire](#inquire)
-  - [MIT License](#mit-license)
+- [Table of Contents](#table-of-contents)
+- [Project Description](#project-description)
+- [Installation and Test Instructions](#installation-and-test-instructions)
+- [SQL: Employee Tracker Demo Video and Images](#sql-employee-tracker-demo-video-and-images)
+- [Inquire](#inquire)
+- [MIT License](#mit-license)
 
 
 ## Project Description
@@ -25,23 +24,24 @@ Developers frequently have to create interfaces that allow non-developers to eas
 - MySQ2
 - Inquirer Package
 - Console.Table Package
+
 ---
 
-## SQL: Employee Tracker Demo Images
+
+
+---
+## SQL: Employee Tracker Demo Video and Images
 ---
 
+
+---
 ![Alt text](assets/img/2023-01-06%2019_46_23-server.js%20-%20SQL-Employee-Tracker%20-%20Visual%20Studio%20Code.png)
+
 ![Alt text](assets/img/2023-01-06%2019_47_42-server.js%20-%20SQL-Employee-Tracker%20-%20Visual%20Studio%20Code.png)
+
 ![Alt text](assets/img/2023-01-06%2019_48_04-server.js%20-%20SQL-Employee-Tracker%20-%20Visual%20Studio%20Code.png)
 
 ---
-## SQL: Employee Tracker Demo Video
----
-
-[Watch the Video](assets/Employee%20Tracker%20Video.mp4)
-
----
-
 ## Inquire
 
 ---

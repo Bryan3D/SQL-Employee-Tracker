@@ -38,7 +38,7 @@ Developers frequently have to create interfaces that allow non-developers to eas
 ## SQL: Employee Tracker Demo Video
 ---
 
-[Watch the Video](assets/Employee%20Tracker%20Video.mp4)
+https://youtu.be/JyxdY3A-n0o
 
 ---
 

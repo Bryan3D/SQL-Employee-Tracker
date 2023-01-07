@@ -140,7 +140,7 @@ function addNewEmployee() {
         console.table(res)
         start()
       })
-      start();
+    
     })
 
 }
@@ -228,7 +228,7 @@ function addNewDepartment() {
           start()
         })
 
-        start()
+       
       })
   }
 

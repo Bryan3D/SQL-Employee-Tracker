@@ -10,6 +10,7 @@
 - [Project Description](#project-description)
 - [Installation and Test Instructions](#installation-and-test-instructions)
 - [SQL: Employee Tracker Demo Video and Images](#sql-employee-tracker-demo-video-and-images)
+- [SQL: Employee Tracker Demo Video](#sql-employee-tracker-demo-video)
 - [Inquire](#inquire)
 - [MIT License](#mit-license)
 
@@ -46,15 +47,12 @@ Developers frequently have to create interfaces that allow non-developers to eas
 ![Alt text](assets/img/2023-01-06%2019_48_04-server.js%20-%20SQL-Employee-Tracker%20-%20Visual%20Studio%20Code.png)
 
 ---
-<<<<<<< HEAD
-=======
+
 ## SQL: Employee Tracker Demo Video
+
 ---
 
-https://user-images.githubusercontent.com/10051887/211125761-4b29c75f-a8e7-4d8d-b292-87a0440d30c8.mp4
-
-
-
+<https://user-images.githubusercontent.com/10051887/211125761-4b29c75f-a8e7-4d8d-b292-87a0440d30c8.mp4>
 
 ---
 >>>>>>> 05f6fb252181616c0b3a4b28c80c9a98766ab560

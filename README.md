@@ -1,3 +1,6 @@
+<p align="center">
+<img src="assets\img\2023-01-06 20_14_50-Gray and White Circle Logo _ DesignEvo Logo Maker.png"/>
+</p>
 # SQL: Employee Tracker
 ---
 ## Table of Contents
@@ -14,8 +17,7 @@
 ## Project Description
 --- 
 <p>
-
-.
+Developers frequently have to create interfaces that allow non-developers to easily view and interact with information stored in databases. These interfaces are called **content management systems (CMS)**. Your assignment this week is to build a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 </p>
 
 ---
@@ -24,10 +26,20 @@
 - MySQ2
 - Inquirer Package
 - Console.Table Package
+---
 
+## SQL: Employee Tracker Demo Images
+---
+
+![Alt text](assets/img/2023-01-06%2019_46_23-server.js%20-%20SQL-Employee-Tracker%20-%20Visual%20Studio%20Code.png)
+![Alt text](assets/img/2023-01-06%2019_47_42-server.js%20-%20SQL-Employee-Tracker%20-%20Visual%20Studio%20Code.png)
+![Alt text](assets/img/2023-01-06%2019_48_04-server.js%20-%20SQL-Employee-Tracker%20-%20Visual%20Studio%20Code.png)
+
+---
 ## SQL: Employee Tracker Demo Video
 ---
-[![Watch the Video](https://drive.google.com/file/d/1O-sH6OnsDz2c03cCYxApJGLwDFIt32ll/preview" width="640" height="480")
+
+[Watch the Video](assets/Employee%20Tracker%20Video.mp4)
 
 ---
 

@@ -3,7 +3,9 @@
 </p>
 
 ## Table of Contents
---- 
+
+---
+
 - [Table of Contents](#table-of-contents)
 - [Project Description](#project-description)
 - [Installation and Test Instructions](#installation-and-test-instructions)
@@ -11,28 +13,30 @@
 - [Inquire](#inquire)
 - [MIT License](#mit-license)
 
-
 ## Project Description
---- 
+
+---
 <p>
 Developers frequently have to create interfaces that allow non-developers to easily view and interact with information stored in databases. These interfaces are called **content management systems (CMS)**. Your assignment this week is to build a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 </p>
 
 ---
+
 ## Installation and Test Instructions
+
 ---
+
 - MySQ2
 - Inquirer Package
 - Console.Table Package
 
 ---
 
-
-
 ---
+
 ## SQL: Employee Tracker Demo Video and Images
----
 
+---
 
 ---
 ![Alt text](assets/img/2023-01-06%2019_46_23-server.js%20-%20SQL-Employee-Tracker%20-%20Visual%20Studio%20Code.png)
@@ -42,14 +46,14 @@ Developers frequently have to create interfaces that allow non-developers to eas
 ![Alt text](assets/img/2023-01-06%2019_48_04-server.js%20-%20SQL-Employee-Tracker%20-%20Visual%20Studio%20Code.png)
 
 ---
+
 ## Inquire
 
 ---
 Feel free to contact me at bryanq2008@live.com with any questions about this project. Visit <https://github.com/Bryan3D> to see more of my projects.
 
-
-
 ## MIT License
+
 ---
 
 Copyright (c) [2023] [SQL: Employee Tracker by Bryan A Quero]
